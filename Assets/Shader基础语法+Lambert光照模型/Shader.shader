@@ -17,14 +17,13 @@ Shader "Learn/Shader" { // Shader名称
       CGPROGRAM
         #pragma vertex Vert // 指定顶点Shader名称为vert
         #pragma fragment Frag // 指定片段Shader名称为frag
-        #include "UnityCG.cginc"
 
         float3 _Vector;
         float4 _Color;
         
         // 输入数据的结构体
         struct Appdata {
-          // 属性语法：属性类型 属性名称 : 特点语义词
+          // 属性语法：属性类型 属性名称 : 特定语义词
           float4 Vertex : POSITION;
           float2 UV : TEXCOORD0;
           float3 Normal : NORMAL;
