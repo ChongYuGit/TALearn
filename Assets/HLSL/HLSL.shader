@@ -6,7 +6,7 @@ Shader "Learn/HLSL" {
     SubShader {
         HLSLINCLUDE
             // 在此编写要共享的 HLSL 代码
-            #include "UnityCG.cginc"
+            #include "UnityShaderVariables.cginc"
             float3 _Light_;
             float4 _Color_;
         ENDHLSL
@@ -18,7 +18,7 @@ Shader "Learn/HLSL" {
                 #pragma vertex Vertex
                 #pragma fragment Fragment
                 
-                struct Input {
+                struct Attribute {
                     float4 VtxPos : POSITION;
                     float2 UV : TEXCOORD0;
                     float3 Normal : NORMAL;
@@ -30,11 +30,11 @@ Shader "Learn/HLSL" {
                     float3 Normal : NORMAL;
                 };
                 
-                V2F Vertex(Input _Input) {
+                V2F Vertex(Attribute _Attr) {
                     V2F v2f;
-                    v2f.VtxPos = mul(UNITY_MATRIX_MVP, _Input.VtxPos);
-                    v2f.UV = _Input.UV;
-                    v2f.Normal = _Input.Normal;
+                    v2f.VtxPos = mul(UNITY_MATRIX_MVP, _Attr.VtxPos);
+                    v2f.UV = _Attr.UV;
+                    v2f.Normal = _Attr.Normal;
                     return v2f;
                 }
         
